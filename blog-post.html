@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="meta-title">Blog — LivePDF</title>
+<meta name="description" id="meta-desc" content="PDF tips and guides from LivePDF.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#E03020">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+.post-hero { padding: calc(var(--nav-h) + 2.5rem) 2rem 2rem; max-width: 780px; margin: 0 auto; }
+.post-tag { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .09em; color: var(--brand); margin-bottom: .6rem; }
+.post-title { font-family: var(--font-serif); font-size: clamp(28px, 5vw, 46px); font-weight: 700; color: var(--ink); line-height: 1.1; letter-spacing: -.5px; margin-bottom: .75rem; }
+.post-meta { font-size: 13px; color: var(--ink4); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.post-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--ink5); }
+.post-cover { width: 100%; height: 280px; background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; font-size: 4rem; margin-bottom: 2rem; overflow: hidden; position: relative; }
+
+.post-body { max-width: 780px; margin: 0 auto; padding: 0 2rem 4rem; }
+.post-content { font-size: 15.5px; color: var(--ink2); line-height: 1.85; }
+.post-content h2 { font-family: var(--font-serif); font-size: 24px; font-weight: 700; color: var(--ink); margin: 2.5rem 0 .75rem; letter-spacing: -.3px; }
+.post-content h3 { font-size: 18px; font-weight: 700; color: var(--ink); margin: 2rem 0 .6rem; }
+.post-content p { margin-bottom: 1.25rem; }
+.post-content ul, .post-content ol { padding-left: 1.5rem; margin-bottom: 1.25rem; }
+.post-content li { margin-bottom: .5rem; line-height: 1.75; }
+.post-content strong { color: var(--ink); font-weight: 700; }
+.post-content a { color: var(--brand); text-decoration: underline; text-underline-offset: 3px; }
+.post-content a:hover { opacity: .75; }
+.post-content blockquote { border-left: 3px solid var(--brand); padding: .75rem 1.25rem; background: var(--brand-bg); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin: 1.5rem 0; font-style: italic; color: var(--ink3); }
+.post-content .callout { background: var(--blue-bg); border: 1px solid var(--blue-border); border-radius: var(--radius-sm); padding: 1rem 1.25rem; margin: 1.5rem 0; font-size: 14px; }
+.post-content .callout strong { color: var(--blue); }
+[data-theme="dark"] .post-content .callout { background: var(--blue-bg); border-color: var(--blue-border); }
+.post-cta { background: var(--brand-bg); border: 1.5px solid var(--brand-border); border-radius: var(--radius-lg); padding: 1.75rem; margin: 2.5rem 0; text-align: center; }
+.post-cta h3 { font-family: var(--font-serif); font-size: 20px; font-weight: 700; color: var(--ink); margin-bottom: .5rem; }
+.post-cta p { font-size: 14px; color: var(--ink3); margin-bottom: 1.1rem; }
+
+.post-nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 0; border-top: 1px solid var(--border); margin-top: 1rem; flex-wrap: wrap; gap: 1rem; }
+.post-nav a { font-size: 13.5px; font-weight: 600; color: var(--brand); display: flex; align-items: center; gap: 5px; }
+.post-nav a:hover { text-decoration: underline; }
+
+@media (max-width: 600px) { .post-hero, .post-body { padding-left: 1rem; padding-right: 1rem; } }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <svg class="nav-logo-icon" viewBox="0 0 34 34" fill="none"><rect width="34" height="34" rx="8" fill="#E03020"/><rect x="7" y="5" width="13" height="17" rx="2" fill="white" opacity="0.15"/><rect x="9" y="7" width="13" height="17" rx="2" fill="white" opacity="0.25"/><rect x="11" y="9" width="13" height="17" rx="2" fill="white"/><path d="M14.5 15.5h7M14.5 18.5h5M14.5 21.5h3" stroke="#E03020" stroke-width="1.5" stroke-linecap="round"/><path d="M20.5 9v4h4" stroke="#E03020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span class="nav-logo-name">Live<em>PDF</em></span>
+  </a>
+  <button class="hamburger" id="menuBtn" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+  <div class="nav-center">
+    <a href="index.html#tools">Tools</a>
+    <a href="blog.html" class="active">Blog</a>
+    <a href="about.html">About</a>
+  </div>
+  <div class="nav-right">
+    <span class="nav-delete-badge">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      Files auto-deleted
+    </span>
+    <button class="nav-btn-dark" id="darkBtn" onclick="toggleDark()"></button>
+    <a href="index.html#tools" class="nav-cta">Try Free →</a>
+  </div>
+</nav>
+<div class="drawer-overlay" id="navOverlay" onclick="toggleMenu()"></div>
+<div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav-hdr"><span class="nav-logo-name">Live<em style="color:var(--brand)">PDF</em></span></div>
+  <div class="mobile-nav-sep">Tools</div>
+  <a href="merge-pdf.html" onclick="toggleMenu()">📎 Merge PDF</a>
+  <a href="split-pdf.html" onclick="toggleMenu()">✂️ Split PDF</a>
+  <a href="compress-pdf.html" onclick="toggleMenu()">🗜️ Compress PDF</a>
+  <a href="pdf-to-word.html" onclick="toggleMenu()">📝 PDF to Word</a>
+  <a href="pdf-to-excel.html" onclick="toggleMenu()">📊 PDF to Excel</a>
+  <a href="pdf-to-jpg.html" onclick="toggleMenu()">🖼️ PDF to JPG</a>
+  <a href="jpg-to-pdf.html" onclick="toggleMenu()">📥 Image to PDF</a>
+  <a href="rotate-pdf.html" onclick="toggleMenu()">🔄 Rotate PDF</a>
+  <a href="watermark-pdf.html" onclick="toggleMenu()">🔏 Watermark PDF</a>
+  <a href="unlock-pdf.html" onclick="toggleMenu()">🔓 Unlock PDF</a>
+  <a href="pdf-preview.html" onclick="toggleMenu()">👁️ PDF Preview</a>
+  <div class="mobile-nav-sep">Pages</div>
+  <a href="blog.html" onclick="toggleMenu()">✍️ Blog</a>
+  <a href="about.html" onclick="toggleMenu()">ℹ️ About</a>
+  <a href="index.html#tools" onclick="toggleMenu()" class="mobile-nav-cta">← All Tools</a>
+</div>
+
+<!-- POST CONTENT (injected by JS) -->
+<div id="post-hero" class="post-hero"></div>
+<div id="post-body" class="post-body"></div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand-logo">Live<em>PDF</em></div>
+        <p>Free, fast and private PDF tools. No signup required. Files deleted immediately after processing.</p>
+      </div>
+      <div class="footer-col"><div class="footer-col-head">Tools</div><ul>
+        <li><a href="merge-pdf.html">Merge PDF</a></li>
+        <li><a href="split-pdf.html">Split PDF</a></li>
+        <li><a href="compress-pdf.html">Compress PDF</a></li>
+        <li><a href="pdf-to-word.html">PDF to Word</a></li>
+        <li><a href="pdf-to-excel.html">PDF to Excel</a></li>
+      </ul></div>
+      <div class="footer-col"><div class="footer-col-head">Convert</div><ul>
+        <li><a href="pdf-to-jpg.html">PDF to JPG</a></li>
+        <li><a href="jpg-to-pdf.html">Image to PDF</a></li>
+        <li><a href="rotate-pdf.html">Rotate PDF</a></li>
+        <li><a href="watermark-pdf.html">Watermark PDF</a></li>
+        <li><a href="unlock-pdf.html">Unlock PDF</a></li>
+      </ul></div>
+      <div class="footer-col"><div class="footer-col-head">Company</div><ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="about.html#privacy">Privacy Policy</a></li>
+        <li><a href="about.html#terms">Terms</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+      </ul></div>
+    </div>
+    <hr class="footer-hr">
+    <div class="footer-bottom">
+      <span>© 2026 LivePDF. All rights reserved.</span>
+      <div class="footer-trust"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Files deleted after processing</div>
+      <div class="footer-bottom-links"><a href="about.html#privacy">Privacy</a><a href="about.html#terms">Terms</a><a href="about.html">About</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="config.js"></script>
+<script src="shared.js"></script>
+<script>
+// ── Blog post data ────────────────────────────────────────────────
+const POSTS = {
+  "compress-pdf-reduce-size": {
+    tag: "Guide · Compression",
+    title: "5 Ways to Reduce PDF File Size Without Losing Quality",
+    date: "April 2026", readTime: "5 min read",
+    cover: "🗜️",
+    coverBg: "linear-gradient(135deg,#FFF3F1,#FEE2DE)",
+    toolLink: "compress-pdf.html",
+    toolName: "Compress PDF",
+    content: `
+      <p>Large PDF files cause real problems — email attachments get rejected, uploads time out, and cloud storage fills up fast. The good news: you can dramatically reduce PDF size without any visible quality loss, if you use the right approach.</p>
+
+      <h2>Why Are PDFs So Large?</h2>
+      <p>Most oversized PDFs have one culprit: <strong>embedded images</strong>. When you scan a document or export from design software, images are often stored at full resolution (300+ DPI) with no compression. A single scanned page can be 2–5 MB on its own.</p>
+      <p>Other contributors include embedded fonts (especially full font sets), metadata, and revision history from editing applications.</p>
+
+      <h2>5 Proven Ways to Shrink Your PDF</h2>
+
+      <h3>1. Recompress Embedded Images (Most Effective)</h3>
+      <p>This is the single biggest win. Most PDF viewers and tools let you re-save images at a lower JPEG quality — typically 60–70% quality is completely indistinguishable from 100% on screen and in most print scenarios.</p>
+      <div class="callout"><strong>💡 LivePDF Tip:</strong> Our <a href="compress-pdf.html">Compress PDF tool</a> offers three levels — Low (85% JPEG, minimal loss), Medium (60%, recommended), and High (35%, maximum reduction). Medium typically achieves 40–70% file size reduction.</div>
+
+      <h3>2. Downscale Oversized Images</h3>
+      <p>If your PDF contains 4000×3000px images but will only be viewed on screen, those images can be safely downscaled to 1200px or less. This alone can reduce file size by 60%+ with zero perceptible quality loss at normal viewing distances.</p>
+
+      <h3>3. Remove Unnecessary Metadata</h3>
+      <p>PDFs can carry hidden baggage: editing history, author information, thumbnail previews, and XML metadata packets. Tools like PyMuPDF (which LivePDF uses) can strip this during save with the <code>garbage=4</code> option.</p>
+
+      <h3>4. Subset Embedded Fonts</h3>
+      <p>If a PDF embeds a full font file but only uses 20 characters from it, that's wasteful. Font subsetting keeps only the characters actually used in the document. Most PDF export tools do this automatically — check your export settings.</p>
+
+      <h3>5. Use Deflate Compression on the PDF Stream</h3>
+      <p>PDF files use internal compression streams. Re-saving with <strong>deflate=True</strong> ensures all content streams are properly compressed. This is done automatically by LivePDF's compress tool.</p>
+
+      <h2>What NOT to Do</h2>
+      <ul>
+        <li><strong>Don't use "print to PDF"</strong> to re-export — this often makes files larger, not smaller.</li>
+        <li><strong>Don't reduce DPI below 72</strong> for documents that will be printed — text becomes blurry.</li>
+        <li><strong>Don't use online tools that just rename files</strong> without actual compression — check the before/after file size.</li>
+      </ul>
+
+      <blockquote>LivePDF shows you the exact before and after file size with percentage savings — so you always know the tool is actually working.</blockquote>
+
+      <h2>Expected Results</h2>
+      <p>With medium compression on a typical scanned document:</p>
+      <ul>
+        <li>10 MB scanned report → 2.5–4 MB (60–75% reduction)</li>
+        <li>5 MB design export → 1.5–2.5 MB (50–70% reduction)</li>
+        <li>1 MB text-only PDF → 0.8–0.95 MB (minimal, already small)</li>
+      </ul>
+      <p>Text-only PDFs don't compress much because there are no images to recompress — that's expected behavior.</p>
+    `
+  },
+
+  "pdf-to-excel-tables": {
+    tag: "Tutorial · Excel",
+    title: "How to Extract Tables from PDF to Excel (The Right Way)",
+    date: "April 2026", readTime: "4 min read",
+    cover: "📊",
+    coverBg: "linear-gradient(135deg,#F0FDF4,#DCFCE7)",
+    toolLink: "pdf-to-excel.html",
+    toolName: "PDF to Excel",
+    content: `
+      <p>PDF table extraction sounds simple — but most tools get it wrong. They either create a separate Excel sheet per PDF page (breaking your data), misalign columns, or produce garbled output for complex tables. Here's how to do it properly.</p>
+
+      <h2>The Problem with Most PDF-to-Excel Tools</h2>
+      <p>The most common failure mode: <strong>one sheet per page</strong>. If your PDF has a 50-page financial report with one table running across all pages, you get 50 separate sheets with no way to analyze the data together. This is the wrong approach.</p>
+      <p>The right approach detects table headers on the first page and then appends subsequent pages as additional rows in the <em>same sheet</em>, maintaining consistent columns throughout.</p>
+
+      <h2>How LivePDF's Smart Mode Works</h2>
+      <p>LivePDF uses <strong>pdfplumber</strong> — a Python library specifically designed for accurate table extraction. It detects ruling lines and cell borders to identify table structure, not just text position.</p>
+
+      <div class="callout"><strong>📊 Smart Mode:</strong> Detects tables across all pages → merges into ONE sheet → consistent columns → styled header row. Use this for structured reports, invoices, and financial data.</div>
+
+      <h3>When to Use Each Mode</h3>
+      <ul>
+        <li><strong>Smart mode</strong> — Best for most PDFs with visible table borders (reports, statements, invoices)</li>
+        <li><strong>Table mode</strong> — Strict table detection only, skips non-tabular content</li>
+        <li><strong>Text mode</strong> — For PDFs with no visible borders (use when other modes give empty output)</li>
+      </ul>
+
+      <h2>Common Issues and Fixes</h2>
+
+      <h3>Getting Empty Output</h3>
+      <p>If Smart or Table mode returns nothing, your PDF probably has no ruling lines — tables are created with whitespace only. Switch to <strong>Text mode</strong>, which extracts all text line by line into a Page / Line / Text structure.</p>
+
+      <h3>Columns Are Misaligned</h3>
+      <p>This happens when a table spans multiple pages and column widths change slightly. pdfplumber handles this better than most tools, but for best results ensure your PDF has consistent table formatting throughout.</p>
+
+      <h3>Scanned PDFs Give No Output</h3>
+      <p>A scanned PDF is an image — there's no text layer to extract. LivePDF auto-detects this and shows a warning. You'd need OCR software first to create a searchable PDF, then extract tables.</p>
+
+      <blockquote>Pro tip: Always check the first few rows of your Excel output to confirm headers were detected correctly before working with the full dataset.</blockquote>
+
+      <h2>After Extraction: Quick Excel Cleanup Tips</h2>
+      <ul>
+        <li>Use <strong>Ctrl+T</strong> to convert your data to an Excel Table for easy filtering and sorting</li>
+        <li>Use <strong>Data → Remove Duplicates</strong> if header rows repeated across PDF pages</li>
+        <li>Check for merged cells — pdfplumber splits them into separate columns which is usually what you want</li>
+      </ul>
+    `
+  },
+
+  "scanned-pdf-ocr-guide": {
+    tag: "Guide · OCR",
+    title: "Scanned PDF vs Text PDF: What's the Difference & Why It Matters",
+    date: "March 2026", readTime: "3 min read",
+    cover: "🔍",
+    coverBg: "linear-gradient(135deg,#EFF6FF,#DBEAFE)",
+    toolLink: "pdf-preview.html",
+    toolName: "PDF Preview",
+    content: `
+      <p>You upload a PDF to a converter, hit the button — and get back a blank Word document or an Excel file with no data. What went wrong? Almost certainly, your PDF is <strong>scanned</strong>, not text-based. Here's what that means and how to deal with it.</p>
+
+      <h2>What is a Text-Based PDF?</h2>
+      <p>When you export a document from Microsoft Word, Google Docs, or any modern application, the PDF contains an actual <strong>text layer</strong>. Every character is stored as real text data — you can select it, copy it, and search it in any PDF viewer.</p>
+      <p>These PDFs convert cleanly to Word, Excel, and other formats because the text is directly accessible.</p>
+
+      <h2>What is a Scanned PDF?</h2>
+      <p>A scanned PDF is essentially a <strong>photograph</strong> of a document, saved as a PDF. A scanner takes a picture of the paper and stores it as an image — there's no text data at all, just pixels.</p>
+      <p>These PDFs look like documents but behave like images. You can't select text, can't copy anything, and conversion tools return blank output because there's nothing to convert.</p>
+
+      <div class="callout"><strong>🔍 How LivePDF detects this:</strong> When you upload a PDF, LivePDF samples the first 5 pages and counts extractable characters. If average is below 50 characters per page, it's likely scanned — and you'll see a warning banner automatically.</div>
+
+      <h2>How to Tell Which Type You Have</h2>
+      <p>The easiest test: open your PDF in any viewer and try to <strong>select and copy some text</strong>. If you can highlight individual words and copy them to clipboard — it's text-based. If your cursor shows a crosshair and you can only select rectangular regions — it's scanned.</p>
+
+      <h2>What to Do With Scanned PDFs</h2>
+      <p>You need <strong>OCR (Optical Character Recognition)</strong> — software that looks at the image and recognizes letter shapes, converting them back into real text.</p>
+
+      <h3>Free OCR Options</h3>
+      <ul>
+        <li><strong>Adobe Acrobat (free tier)</strong> — Has built-in OCR for scanned PDFs</li>
+        <li><strong>Google Drive</strong> — Upload a PDF, right-click → Open with Google Docs → Google automatically runs OCR</li>
+        <li><strong>Microsoft Office Lens</strong> — Mobile app that scans documents and creates searchable PDFs</li>
+        <li><strong>Tesseract OCR</strong> — Free open-source OCR engine (requires technical setup)</li>
+      </ul>
+
+      <h3>After OCR</h3>
+      <p>Once you have a text-layer PDF, tools like LivePDF can extract content cleanly. Run the OCR output through our <a href="pdf-to-word.html">PDF to Word</a> or <a href="pdf-to-excel.html">PDF to Excel</a> tools for best results.</p>
+
+      <blockquote>OCR accuracy depends on scan quality. High-contrast, straight scans at 300 DPI give the best results. Skewed, low-contrast, or handwritten documents may need manual correction afterward.</blockquote>
+
+      <h2>The 80/20 Rule for PDF Conversion</h2>
+      <p>In our experience, about 80% of PDFs people struggle to convert are scanned. If a conversion tool gives you blank output, check for scanned content first before assuming the tool is broken.</p>
+    `
+  }
+};
+
+// ── Render post ───────────────────────────────────────────────────
+function renderPost() {
+  const slug = new URLSearchParams(location.search).get("slug") || "";
+  const post = POSTS[slug];
+
+  if (!post) {
+    document.getElementById("post-hero").innerHTML = `
+      <div style="text-align:center;padding:3rem 0">
+        <div style="font-size:3rem;margin-bottom:1rem">😕</div>
+        <h1 class="post-title">Post not found</h1>
+        <p style="color:var(--ink3);margin:1rem 0"><a href="blog.html" style="color:var(--brand)">← Back to Blog</a></p>
+      </div>`;
+    return;
+  }
+
+  // Set meta
+  document.getElementById("meta-title").textContent = post.title + " — LivePDF Blog";
+  document.getElementById("meta-desc").content = post.content.replace(/<[^>]+>/g,"").slice(0,160);
+
+  // Hero
+  document.getElementById("post-hero").innerHTML = `
+    <div class="breadcrumb anim-up">
+      <a href="index.html">Home</a>
+      <span class="breadcrumb-sep">/</span>
+      <a href="blog.html">Blog</a>
+      <span class="breadcrumb-sep">/</span>
+      Article
+    </div>
+    <div class="post-tag anim-up">${post.tag}</div>
+    <h1 class="post-title anim-up-1">${post.title}</h1>
+    <div class="post-meta anim-up-2">
+      <span>LivePDF Team</span>
+      <span class="post-dot"></span>
+      <span>${post.date}</span>
+      <span class="post-dot"></span>
+      <span>${post.readTime}</span>
+    </div>
+    <div class="post-cover anim-up-2" style="background:${post.coverBg}">${post.cover}</div>`;
+
+  // Body
+  document.getElementById("post-body").innerHTML = `
+    <div class="post-content">${post.content}</div>
+    <div class="post-cta">
+      <h3>Try it free — no signup needed</h3>
+      <p>Use our <strong>${post.toolName}</strong> tool right now. Files processed instantly and deleted after download.</p>
+      <a href="${post.toolLink}" class="btn btn-brand">Open ${post.toolName} →</a>
+    </div>
+    <div class="post-nav">
+      <a href="blog.html">← Back to all posts</a>
+      <a href="index.html#tools">All Tools →</a>
+    </div>`;
+}
+
+renderPost();
+</script>
+</body>
+</html>
