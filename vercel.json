@@ -1,0 +1,31 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/merge-pdf",     "destination": "/merge-pdf.html" },
+    { "source": "/split-pdf",     "destination": "/split-pdf.html" },
+    { "source": "/compress-pdf",  "destination": "/compress-pdf.html" },
+    { "source": "/rotate-pdf",    "destination": "/rotate-pdf.html" },
+    { "source": "/watermark-pdf", "destination": "/watermark-pdf.html" },
+    { "source": "/pdf-to-word",   "destination": "/pdf-to-word.html" },
+    { "source": "/pdf-to-excel",  "destination": "/pdf-to-excel.html" },
+    { "source": "/pdf-to-jpg",    "destination": "/pdf-to-jpg.html" },
+    { "source": "/jpg-to-pdf",    "destination": "/jpg-to-pdf.html" },
+    { "source": "/unlock-pdf",    "destination": "/unlock-pdf.html" },
+    { "source": "/pdf-preview",   "destination": "/pdf-preview.html" },
+    { "source": "/about",         "destination": "/about.html" },
+    { "source": "/blog",          "destination": "/blog.html" },
+    { "source": "/blog/:slug",    "destination": "/blog-post.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options",        "value": "DENY" },
+        { "key": "X-XSS-Protection",       "value": "1; mode=block" },
+        { "key": "Referrer-Policy",        "value": "strict-origin-when-cross-origin" }
+      ]
+    }
+  ]
+}

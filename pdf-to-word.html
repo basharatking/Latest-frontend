@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDF to Word — LivePDF</title>
+<meta name="description" content="Convert PDF to editable Word .docx free online.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#E03020">
+<meta property="og:type" content="website">
+<meta property="og:title" content="PDF to Word — LivePDF">
+<meta property="og:description" content="Convert PDF to editable Word .docx free online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+
+</head>
+<body>
+<nav class="nav">
+  <a href="index.html" class="nav-logo"><svg class="nav-logo-icon" viewBox="0 0 34 34" fill="none">
+  <rect width="34" height="34" rx="8" fill="#E03020"/>
+  <rect x="7" y="5" width="13" height="17" rx="2" fill="white" opacity="0.15"/>
+  <rect x="9" y="7" width="13" height="17" rx="2" fill="white" opacity="0.25"/>
+  <rect x="11" y="9" width="13" height="17" rx="2" fill="white"/>
+  <path d="M14.5 15.5h7M14.5 18.5h5M14.5 21.5h3" stroke="#E03020" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M20.5 9v4h4" stroke="#E03020" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg><span class="nav-logo-name">Live<em>PDF</em></span></a>
+  <button class="hamburger" id="menuBtn" onclick="toggleMenu()" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  <div class="nav-center">
+    <a href="index.html#tools" class="active">Tools</a>
+    <a href="blog.html" >Blog</a>
+    <a href="about.html" >About</a>
+  </div>
+  <div class="nav-right">
+    <span class="nav-delete-badge">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      Files auto-deleted
+    </span>
+    <button class="nav-btn-dark" id="darkBtn" onclick="toggleDark()"></button>
+    <a href="index.html#tools" class="nav-cta">Try Free →</a>
+  </div>
+</nav>
+<div class="drawer-overlay" id="navOverlay" onclick="toggleMenu()"></div>
+<div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav-hdr"><span class="nav-logo-name">Live<em style="color:var(--brand)">PDF</em></span></div>
+  <div class="mobile-nav-sep">All Tools</div>
+  <a href="merge-pdf.html" onclick="toggleMenu()">📎 Merge PDF</a><a href="split-pdf.html" onclick="toggleMenu()">✂️ Split PDF</a><a href="compress-pdf.html" onclick="toggleMenu()">🗜️ Compress PDF</a><a href="rotate-pdf.html" onclick="toggleMenu()">🔄 Rotate PDF</a><a href="watermark-pdf.html" onclick="toggleMenu()">🔏 Watermark PDF</a><a href="pdf-to-word.html" onclick="toggleMenu()">📝 PDF to Word</a><a href="pdf-to-excel.html" onclick="toggleMenu()">📊 PDF to Excel</a><a href="pdf-to-jpg.html" onclick="toggleMenu()">🖼️ PDF to JPG</a><a href="jpg-to-pdf.html" onclick="toggleMenu()">📥 Image to PDF</a><a href="unlock-pdf.html" onclick="toggleMenu()">🔓 Unlock PDF</a><a href="pdf-preview.html" onclick="toggleMenu()">👁️ PDF Preview</a>
+  <div class="mobile-nav-sep">Pages</div>
+  <a href="blog.html" onclick="toggleMenu()">✍️ Blog</a>
+  <a href="about.html" onclick="toggleMenu()">ℹ️ About</a>
+  <a href="index.html#tools" onclick="toggleMenu()" class="mobile-nav-cta">← All Tools</a>
+</div>
+<div class="tool-hero">
+  <div class="breadcrumb"><a href="index.html">Home</a><span class="breadcrumb-sep">/</span>PDF to Word</div>
+  <h1 class="anim-up">📝 PDF to Word (.docx)</h1>
+  <p class="lead anim-up-1">Extract text from digitally-created PDFs into a proper Word document. Scanned PDFs are auto-detected.</p>
+  <div class="tool-meta anim-up-2">
+    <span class="tool-badge badge-free">✓ Free</span>
+    <span class="tool-badge badge-secure">🔒 Private</span>
+    <span class="tool-badge badge-fast">⚡ Fast</span>
+  </div>
+</div>
+<div class="tool-main">
+  <div class="tool-card anim-up-2">
+    <div class="trust-strip">
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+  Files are automatically deleted after processing — we never store your documents
+</div>
+    <div class="upload-zone" onclick="document.getElementById('fi-toword').click()">
+  <div class="uz-icon">📂</div>
+  <div class="uz-title">Drop a PDF file here</div>
+  <div class="uz-sub">Drag &amp; drop or click to browse</div>
+  <div class="uz-badge">🔒 Free · Max 10 MB free</div>
+  <input type="file" id="fi-toword" class="file-input"  accept=".pdf" onchange="handleFiles('toword',this)">
+</div>
+<div class="file-chips" id="fl-toword"></div>
+<div id="ocr-hint-toword"></div>
+<div class="notice-info">
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+  Works best with <strong>text-based PDFs</strong>. Scanned/image PDFs need OCR (auto-detected above).
+</div>
+<div class="progress-wrap" id="pw-toword">
+  <div class="progress-bar-track"><div class="progress-bar-fill" id="pb-toword"></div></div>
+  <div class="progress-label" id="pl-toword">Processing…</div>
+</div>
+<button class="action-btn" id="btn-toword" onclick="runToWord()">📝 Convert to Word</button>
+<div class="result-box" id="rb-toword"><p id="rb-toword-msg"></p></div>
+  </div>
+</div>
+<div class="related-tools">
+  <div class="related-inner">
+    <h3>More Free PDF Tools</h3>
+    <div class="tools-mini-grid"><a href="merge-pdf.html" class="mini-card"><span class="mini-card-icon">📎</span>Merge PDF</a><a href="split-pdf.html" class="mini-card"><span class="mini-card-icon">✂️</span>Split PDF</a><a href="compress-pdf.html" class="mini-card"><span class="mini-card-icon">🗜️</span>Compress PDF</a><a href="rotate-pdf.html" class="mini-card"><span class="mini-card-icon">🔄</span>Rotate PDF</a><a href="watermark-pdf.html" class="mini-card"><span class="mini-card-icon">🔏</span>Watermark PDF</a><a href="pdf-to-excel.html" class="mini-card"><span class="mini-card-icon">📊</span>PDF to Excel</a><a href="pdf-to-jpg.html" class="mini-card"><span class="mini-card-icon">🖼️</span>PDF to JPG</a><a href="jpg-to-pdf.html" class="mini-card"><span class="mini-card-icon">📥</span>Image to PDF</a><a href="unlock-pdf.html" class="mini-card"><span class="mini-card-icon">🔓</span>Unlock PDF</a><a href="pdf-preview.html" class="mini-card"><span class="mini-card-icon">👁️</span>PDF Preview</a></div>
+  </div>
+</div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand-logo">Live<em>PDF</em></div>
+        <p>Free, fast and private PDF tools. No signup required. Files deleted immediately after processing.</p>
+      </div>
+      <div class="footer-col"><div class="footer-col-head">Organize</div><ul><li><a href="merge-pdf.html">Merge PDF</a></li><li><a href="split-pdf.html">Split PDF</a></li><li><a href="compress-pdf.html">Compress PDF</a></li><li><a href="rotate-pdf.html">Rotate PDF</a></li><li><a href="watermark-pdf.html">Watermark PDF</a></li><li><a href="pdf-to-word.html">PDF to Word</a></li></ul></div>
+      <div class="footer-col"><div class="footer-col-head">Convert</div><ul><li><a href="pdf-to-word.html">PDF to Word</a></li><li><a href="pdf-to-excel.html">PDF to Excel</a></li><li><a href="pdf-to-jpg.html">PDF to JPG</a></li><li><a href="jpg-to-pdf.html">Image to PDF</a></li><li><a href="unlock-pdf.html">Unlock PDF</a></li><li><a href="pdf-preview.html">PDF Preview</a></li></ul></div>
+      <div class="footer-col"><div class="footer-col-head">Company</div><ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="about.html#privacy">Privacy Policy</a></li>
+        <li><a href="about.html#terms">Terms of Service</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+      </ul></div>
+    </div>
+    <hr class="footer-hr">
+    <div class="footer-bottom">
+      <span>© 2026 LivePDF. All rights reserved.</span>
+      <div class="footer-trust">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Files deleted after processing
+      </div>
+      <div class="footer-bottom-links">
+        <a href="about.html#privacy">Privacy</a>
+        <a href="about.html#terms">Terms</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="config.js"></script><script src="shared.js"></script><script>
+async function runToWord(){
+  const f=fileStore["toword"];if(!f||!f[0]){alert("Select a PDF.");return;}
+  setBtnState("toword",true);
+  try{const fd=new FormData();fd.append("file",f[0]);
+  const r=await callAPI("/pdf-to-word",fd,"toword","Extracting text…");
+  downloadBlob(await r.blob(),f[0].name.replace(/[.]pdf$/i,".docx"));hideProgress("toword");showResult("toword","Converted to Word! Downloading…");
+  }catch(e){hideProgress("toword");showResult("toword",e.message,true);}setBtnState("toword",false,"Convert to Word");}
+</script></body></html>
